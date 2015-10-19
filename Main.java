@@ -8,9 +8,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Main extends JavaPlugin {
 	
 	public void onEnable()  {
-		getServer().getPluginManager().registerEvents(new Listeners(), this);
-		getCommand("eg").setExecutor(new Commands(this,new GameCountdown(this, null)));
-		getCommand("endergolf").setExecutor(new Commands(this,new GameCountdown(this, null)));
+		getServer().getPluginManager().registerEvents(new Listeners(new Game(null,null)), this);
+		getCommand("eg").setExecutor(new Commands(this,new GameInit(this, null,new ScoreBoard(null,null),new Game(this,null)),new ScoreBoard(null,null),new Game(this,null)));
+		getCommand("endergolf").setExecutor(new Commands(this,new GameInit(this, null,new ScoreBoard(null,null),new Game(this,null)),new ScoreBoard(null,null), new Game(this,null)));
 		this.saveDefaultConfig();
 	}
 	
